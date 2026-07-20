@@ -1,4 +1,5 @@
-}
+margin-bottom: 25px;
+        }
 
         /* CTA Button */
         .cta-button {
@@ -41,7 +42,7 @@
         .footer-note strong {
             color: #2e9b57;
         }
-    </style>
+</style>
 </head>
 <body>
 
@@ -73,7 +74,7 @@
         <div class="rocket-emoji">🚀</div>
 
         <!-- Action Button -->
-        <a href="https://t.me/+z9Rnfis3qfcxNDg1" class="cta-button" id="joinBtn" onclick="fbq('track', 'Subscribe', {value: 0.00, currency: 'INR'});">
+        <a href="https://t.me/+z9Rnfis3qfcxNDg1" class="cta-button" id="joinBtn">
             JOIN TELEGRAM & START WORK <span>💼</span>
         </a>
 
@@ -83,6 +84,25 @@
         </p>
 
     </div>
+
+    <!-- Meta Pixel Button Click Event Script -->
+    <script>
+        document.getElementById('joinBtn').addEventListener('click', function(event) {
+            // 1. Pehle page redirection ko temporary rokein taaki Pixel track kar sake
+            event.preventDefault(); 
+            
+            // 2. Meta Subscribe event fire karein
+            if (typeof fbq === 'function') {
+                fbq('track', 'Subscribe', {value: 0.00, currency: 'INR'});
+            }
+
+            // 3. 300ms ke delay ke baad Telegram par sahi se bhejein
+            var targetUrl = this.getAttribute('href');
+            setTimeout(function() {
+                window.location.href = targetUrl;
+            }, 300);
+        });
+    </script>
 
 </body>
 </html>
@@ -114,7 +134,7 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=2201831907329598&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
- <style>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -223,13 +243,14 @@ src="https://www.facebook.com/tr?id=2201831907329598&ev=PageView&noscript=1"
             justify-content: center;
             border-radius: 50%;
         }
-.limited-seats {
+
+        .limited-seats {
             color: #1a629e;
             font-style: italic;
             font-size: 16px;
-          font-weight: 600;
+            font-weight: 600;
             margin-bottom: 5px;
         }
-.rocket-emoji {
+
+        .rocket-emoji {
             font-size: 24px;
-    margin-bottom: 25px;
